@@ -1,8 +1,26 @@
 #include <SFML/Graphics.hpp>
 
+#include "engine/math/Vector2.h"
+#include "engine/physics/Physics.h"
+#include "engine/core/Object.h"
+#include "engine/input/Input.h"
+
 #define WIDTH 1280
 #define HEIGHT 720
 
+Input MainInput;
+
+void RenderStep() {
+
+}
+
+void Update() {
+
+}
+
+void LateUpdate() {
+
+}
 
 int main() {
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
@@ -11,7 +29,7 @@ int main() {
     window.setPosition(sf::Vector2i((desktop.size.x/2)-(WIDTH/2),(desktop.size.y/2)-(HEIGHT/2)));
     window.setFramerateLimit(60);
 
-    sf::Vector2f plrPos(10,10);
+    Object plr(Vector2(0,0), Vector2(50,50));
 
     while (window.isOpen())
     {
@@ -22,25 +40,12 @@ int main() {
         }
         window.clear(sf::Color::White);
 
-        sf::RectangleShape shap(sf::Vector2f(25,25));
-        shap.setFillColor(sf::Color::Blue);
-        shap.setPosition(plrPos);
-        window.draw(shap);
+        MainInput.Update();
 
-        sf::Vector2f plrMove(0,0);
-
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
-            plrMove.x -= 1;
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
-            plrMove.x += 1;
-         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
-            plrMove.y -= 1;
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
-            plrMove.y += 1;
-
-        if(plrMove.length()  > 0)
-           plrPos += plrMove.normalized();
-
+        plr.Position += MainInput.InputDirection * 5;
+        
+        plr.Render(&window);
+        
         window.display();
     }
 }
