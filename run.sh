@@ -1,5 +1,0 @@
-make
-
-./game
-
-make clean
