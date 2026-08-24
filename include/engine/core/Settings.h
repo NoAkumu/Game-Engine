@@ -4,9 +4,8 @@ struct Configs
 {
     int WIDTH = 1280;
     int HEIGHT = 720;
-    bool Fullscreen = 0;
+    bool Fullscreen = false;
 };
 
-
-Configs Save();
+bool Save(Configs c);
 Configs Load();

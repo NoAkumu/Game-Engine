@@ -72,5 +72,10 @@ int main() {
         // Display whats been rendered 
         window.display();
     }
+
+    bool saved = Save(_Config);
+    if (saved) {
+        std::cout << "Saved Config Sucessfully!" << std::endl;
+    }
 }
 
