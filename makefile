@@ -3,7 +3,7 @@ CXX := g++
 CXXFLAGS := -Wall -Wextra -I./include
 
 LDFLAGS := 
-LDLIBS := -lsfml-graphics -lsfml-window -lsfml-system
+LDLIBS := -lsfml-graphics -lsfml-window -lsfml-system -ltinyxml2
 
 TARGET := game
 

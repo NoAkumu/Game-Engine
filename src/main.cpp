@@ -7,12 +7,10 @@
 #include "engine/physics/Physics.h"
 #include "engine/core/Object.h"
 #include "engine/input/Input.h"
+#include "engine/core/Settings.h"
 
 // Player
 #include "game/Player.h"
-
-#define WIDTH 1280
-#define HEIGHT 720
 
 // Input Bruh
 Input MainInput;
@@ -35,10 +33,12 @@ void LateUpdate() {
 }
 
 int main() {
+    Configs _Config = Load();
+
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
 
-    sf::RenderWindow window(sf::VideoMode({WIDTH,HEIGHT}), "SFML", sf::Style::Close | sf::Style::Titlebar);
-    window.setPosition(sf::Vector2i((desktop.size.x/2)-(WIDTH/2),(desktop.size.y/2)-(HEIGHT/2)));
+    sf::RenderWindow window(sf::VideoMode({_Config.WIDTH,_Config.HEIGHT}), "SFML", sf::Style::Close | sf::Style::Titlebar);
+    window.setPosition(sf::Vector2i((desktop.size.x/2)-(_Config.WIDTH/2),(desktop.size.y/2)-(_Config.HEIGHT/2)));
     window.setFramerateLimit(165);
 
     _window = &window;
@@ -47,7 +47,7 @@ int main() {
 
     while (window.isOpen())
     {
-        // 
+        // Clock to count DeltaTime
         sf::Time deltaTimer = clock.restart();
         float deltaTime = deltaTimer.asMilliseconds();
 
