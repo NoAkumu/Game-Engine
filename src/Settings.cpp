@@ -66,7 +66,7 @@ XMLElement* SetValue(XMLDocument& doc, char* key) {
 }
 
 XMLElement* SetValue(XMLDocument& doc, XMLElement* elmnt, char* key) {
-    XMLElement* elem = doc.FirstChildElement(key);
+    XMLElement* elem = elmnt->FirstChildElement(key);
     if (elem == nullptr) {
         elem = doc.NewElement(key);
         elmnt->InsertEndChild(elem);
@@ -77,12 +77,6 @@ XMLElement* SetValue(XMLDocument& doc, XMLElement* elmnt, char* key) {
 
 bool Save(Configs c) {
     XMLDocument doc;
-
-    std::cout << c.Fullscreen << std::endl;
-
-    c.Fullscreen = false;
-
-    std::cout << c.Fullscreen << std::endl;
 
     // Loading File
     XMLError result = doc.LoadFile("Assets/config.xml");
