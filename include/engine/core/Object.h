@@ -11,7 +11,8 @@ class Object {
             shape.setSize(size);
         }
         virtual ~Object() = default;
-        Vector2 Position, Size;
+        Vector2 Position;
+        Vector2 Size;
         sf::Color Color = sf::Color::Black;
         virtual void Update(float dt) = 0;
         virtual void Render(sf::RenderWindow& window);

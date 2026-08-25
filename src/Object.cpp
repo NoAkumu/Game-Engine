@@ -7,5 +7,4 @@ void Object::Render(sf::RenderWindow& window) {
     shap.setFillColor(sf::Color::Blue);
     shap.setPosition(Object::Position);
     window.draw(shap);
-    std::cout << Object::Position.x << " : " << Object::Position.y << std::endl;
 }
