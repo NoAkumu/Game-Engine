@@ -5,6 +5,7 @@
 // Engine Include
 #include "engine/math/Vector2.h"
 #include "engine/physics/Physics.h"
+#include "engine/core/ObjectManager.h"
 #include "engine/core/Object.h"
 #include "engine/input/Input.h"
 #include "engine/core/Settings.h"
@@ -13,18 +14,20 @@
 #include "game/Player.h"
 
 // Input Bruh
+ObjectManager gameObjects;
 Input MainInput;
-//Window Pointer
-sf::RenderWindow *_window;
+
 
 // PLr Instance (TEMP)
-Player plr(Vector2(0,0), Vector2(50,50));
+Player plr = gameObjects.create<Player>(Vector2(0,0), Vector2(50,50));
 
-void RenderStep() {
-    plr.Render(_window);
+void RenderStep(sf::RenderWindow& _window) {
+    gameObjects.RenderAll(_window);
+    //plr.Render(_window);
 }
 
 void Update(float dt) {
+    std::cout << MainInput.InputDirection.x << " : " << MainInput.InputDirection.y << std::endl;
     plr.Position += MainInput.InputDirection * 100 * dt;
 }
 
@@ -41,9 +44,9 @@ int main() {
     window.setPosition(sf::Vector2i((desktop.size.x/2)-(_Config.WIDTH/2),(desktop.size.y/2)-(_Config.HEIGHT/2)));
     window.setFramerateLimit(165);
 
-    _window = &window;
-
     sf::Clock clock;
+
+
 
     while (window.isOpen())
     {
@@ -62,8 +65,10 @@ int main() {
         // Update Input Detection
         MainInput.Update();
 
+        
+
         // Update Steps
-        RenderStep();
+        RenderStep(window);
 
         Update(deltaTime/1000);
         

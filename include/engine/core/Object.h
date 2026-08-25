@@ -14,5 +14,5 @@ class Object {
         Vector2 Position, Size;
         sf::Color Color = sf::Color::Black;
         virtual void Update(float dt) = 0;
-        virtual void Render(sf::RenderWindow *window);
+        virtual void Render(sf::RenderWindow& window);
 };
