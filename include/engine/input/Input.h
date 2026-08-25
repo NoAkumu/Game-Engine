@@ -7,3 +7,5 @@ class Input {
         void Update();
         Input() : InputDirection(Vector2(0,0)) {};
 };
+
+inline Input MainInput;

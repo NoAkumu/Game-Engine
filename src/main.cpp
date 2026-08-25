@@ -15,8 +15,6 @@
 
 // Input Bruh
 ObjectManager gameObjects;
-Input MainInput;
-
 
 // PLr Instance (TEMP)
 Player plr = gameObjects.create<Player>(Vector2(0,0), Vector2(50,50));
@@ -27,8 +25,7 @@ void RenderStep(sf::RenderWindow& _window) {
 }
 
 void Update(float dt) {
-    std::cout << MainInput.InputDirection.x << " : " << MainInput.InputDirection.y << std::endl;
-    plr.Position += MainInput.InputDirection * 100 * dt;
+    gameObjects.UpdateAll(dt);
 }
 
 void LateUpdate() {
@@ -64,7 +61,6 @@ int main() {
 
         // Update Input Detection
         MainInput.Update();
-
         
 
         // Update Steps
