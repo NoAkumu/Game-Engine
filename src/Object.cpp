@@ -4,7 +4,7 @@
 
 void Object::Render(sf::RenderWindow& window) {
     sf::RectangleShape shap(Object::Size);
-    shap.setFillColor(sf::Color::Blue);
+    shap.setFillColor(Object::Color);
     shap.setPosition(Object::Position);
     window.draw(shap);
 }
