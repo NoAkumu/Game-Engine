@@ -11,17 +11,19 @@
 #include "engine/core/Settings.h"
 
 // Player
-#include "game/Player.h"
+#include "game/GameTypes.h"
 
 // Input Bruh
 ObjectManager gameObjects;
 
 // PLr Instance (TEMP)
-Player plr = gameObjects.create<Player>(Vector2(0,0), Vector2(50,50));
+//Player plr = gameObjects.create<Player>(Vector2(0,0), Vector2(50,50));
+Button butt = gameObjects.create<Button>(Vector2(60,60), Vector2(50,50), Vector2(0.5,0.5),1.1);
 
 void RenderStep(sf::RenderWindow& _window) {
+    // Update Input Detection
+    MainInput.Update(_window);
     gameObjects.RenderAll(_window);
-    //plr.Render(_window);
 }
 
 void Update(float dt) {
@@ -43,8 +45,6 @@ int main() {
 
     sf::Clock clock;
 
-
-
     while (window.isOpen())
     {
         // Clock to count DeltaTime
@@ -58,10 +58,6 @@ int main() {
         }
         // Clear Window for Next Rendering
         window.clear(sf::Color::White);
-
-        // Update Input Detection
-        MainInput.Update();
-        
 
         // Update Steps
         RenderStep(window);
