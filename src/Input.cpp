@@ -1,7 +1,7 @@
 #include "engine/input/Input.h"
 #include "engine/math/Vector2.h"
 
-void Input::Update() {
+void Input::Update(sf::WindowBase& relative) {
     Vector2 InputDir(0,0);
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
@@ -12,5 +12,7 @@ void Input::Update() {
         InputDir.y -= 1;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
         InputDir.y += 1;
-    this->InputDirection = (InputDir.length() > 0 ? InputDir.normalized() : InputDir);
+    Input::InputDirection = (InputDir.length() > 0 ? InputDir.normalized() : InputDir);
+    sf::Vector2i mousePos = sf::Mouse::getPosition(relative);
+    Input::MousePosition = Vector2(mousePos);
 };  
