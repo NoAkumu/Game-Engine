@@ -13,10 +13,6 @@
 // Player
 #include "game/GameTypes.h"
 
-// Input Bruh
-ObjectManager gameObjects;
-
-// PLr Instance (TEMP)
 //Player plr = gameObjects.create<Player>(Vector2(0,0), Vector2(50,50));
 Button butt = gameObjects.create<Button>(Vector2(60,60), Vector2(50,50), Vector2(0.5,0.5),1.1);
 

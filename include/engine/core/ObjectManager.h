@@ -27,3 +27,5 @@ class  ObjectManager {
     private:
         std::vector<std::unique_ptr<Object>> objects;
 };
+
+inline ObjectManager gameObjects;
