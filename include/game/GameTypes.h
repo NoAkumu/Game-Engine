@@ -10,6 +10,7 @@ class Player : public Object {
 class Button : public Object {
     private:
         Vector2 OriginalSize;
+        bool pressed = false;
     public:
         float highlight;
         Button(Vector2 position, Vector2 size, float highlight = 0) : Object(position, size), OriginalSize(size), highlight(highlight) {};
