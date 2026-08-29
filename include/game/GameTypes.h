@@ -1,5 +1,6 @@
 #pragma once
 #include "engine/core/Object.h"
+#include <iostream>
 
 class Player : public Object {
     public:
@@ -11,10 +12,13 @@ class Button : public Object {
     private:
         Vector2 OriginalSize;
         bool pressed = false;
+        std::function<void()> clickFunction = [] {
+                std::cout << "Click!" << std::endl;
+                std::cout << "Did you forget to override the OnClick() function?" << std::endl;
+        };
     public:
         float highlight;
         Button(Vector2 position, Vector2 size, float highlight = 0) : Object(position, size), OriginalSize(size), highlight(highlight) {};
         Button(Vector2 position, Vector2 size, Vector2 AnchorPoint = Vector2(0,0), float highlight = 0) : Object(position, size, AnchorPoint), OriginalSize(size), highlight(highlight) {};
         void Update(float dt);
-        virtual void OnClick();
 };

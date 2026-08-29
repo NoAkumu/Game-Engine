@@ -19,7 +19,7 @@ void Button::Update(float dt) {
         if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
             if (!pressed) {
                 Button::pressed = true;
-                Button::OnClick();
+                Button::clickFunction();
             }
         }else{
             Button::pressed = false;
@@ -30,9 +30,4 @@ void Button::Update(float dt) {
         }
     }
     
-}
-
-void Button::OnClick() {
-    std::cout << "Click!" << std::endl;
-    std::cout << "Did you forget to override the OnClick() function?" << std::endl;
 }
