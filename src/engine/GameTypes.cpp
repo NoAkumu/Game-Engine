@@ -1,7 +1,7 @@
-#include "game/GameTypes.h"
+#include <iostream>
+#include "engine/core/GameTypes.h"
 #include "engine/input/Input.h"
 #include "engine/math/Math.h"
-#include <iostream>
 
 // Player Object
 void Player::Update(float dt) {
@@ -19,7 +19,11 @@ void Button::Update(float dt) {
         if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
             if (!pressed) {
                 Button::pressed = true;
-                Button::clickFunction();
+                if (Button::clickFunction) {
+                    Button::clickFunction();    
+                } else {
+                    std::cerr << "Error: No Callback Function / Bad Function (Button: " << this << ")" << std::endl;
+                }
             }
         }else{
             Button::pressed = false;

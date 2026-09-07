@@ -1,20 +1,14 @@
-#include <iostream>
-
-#include <SFML/Graphics.hpp>
-
 // Engine Include
-#include "engine/math/Vector2.h"
-#include "engine/physics/Physics.h"
-#include "engine/core/ObjectManager.h"
-#include "engine/core/Object.h"
-#include "engine/input/Input.h"
-#include "engine/core/Settings.h"
-
-// Player
-#include "game/GameTypes.h"
+#include "engine/Engine.h"
 
 //Player plr = gameObjects.create<Player>(Vector2(0,0), Vector2(50,50));
-Button butt = gameObjects.create<Button>(Vector2(60,60), Vector2(50,50), Vector2(0.5,0.5),1.1);
+Button& butt = gameObjects.create<Button>(Vector2(60,60), Vector2(50,50), Vector2(0.5,0.5),1.1);
+
+void Start() {
+    butt.SetFunction([]() {
+        std::cout << " Button print" << std::endl;
+    });
+}
 
 void RenderStep(sf::RenderWindow& _window) {
     // Update Input Detection
@@ -24,6 +18,7 @@ void RenderStep(sf::RenderWindow& _window) {
 
 void Update(float dt) {
     gameObjects.UpdateAll(dt);
+    
 }
 
 void LateUpdate() {
@@ -40,6 +35,8 @@ int main() {
     window.setFramerateLimit(165);
 
     sf::Clock clock;
+
+    Start();
 
     while (window.isOpen())
     {

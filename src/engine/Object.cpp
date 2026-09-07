@@ -1,6 +1,4 @@
-#include <SFML/Graphics.hpp>
 #include "engine/core/Object.h"
-#include <iostream>
 
 void Object::Render(sf::RenderWindow& window) {
     sf::RectangleShape shap(Object::Size);

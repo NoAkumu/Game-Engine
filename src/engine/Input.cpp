@@ -1,5 +1,6 @@
+#include <SFML/Graphics.hpp>
 #include "engine/input/Input.h"
-#include "engine/math/Vector2.h"
+#include "engine/math/Math.h"
 
 void Input::Update(sf::WindowBase& relative) {
     Vector2 InputDir(0,0);

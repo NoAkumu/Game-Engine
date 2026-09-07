@@ -1,6 +1,5 @@
-#include <iostream>
-
 #include "engine/core/Settings.h"
+#include <iostream>
 
 #include "tinyxml2.h"
 
