@@ -12,7 +12,7 @@ class  ObjectManager {
 
             objects.push_back(std::move(obj));
 
-            reference->Start();
+            reference.Start();
 
             return reference;
         };

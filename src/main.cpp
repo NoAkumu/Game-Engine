@@ -5,9 +5,7 @@
 Button& butt = gameObjects.create<Button>(Vector2(60,60), Vector2(50,50), Vector2(0.5,0.5),1.1);
 
 void Awake() {
-    butt.SetFunction([]() {
-        std::cout << " Button print" << std::endl;
-    });
+
 }
 
 void RenderStep(sf::RenderWindow& _window) {
@@ -35,7 +33,7 @@ int main() {
 
     sf::Clock clock;
 
-    Awake();
+    Awake(); // This shoulkd be run after object loading
 
     while (window.isOpen())
     {

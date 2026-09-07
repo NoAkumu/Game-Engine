@@ -1,20 +1,22 @@
 #pragma once
-#include "engine/core/Object.h"
 
+class Object;
+
+// Base Class
 class Component
 {
     protected:
-        Object* owner;
+        Object* owner = nullptr;
         bool enabled = true;
     public:
         // Declarations
-        explicit Component();
+        explicit Component() = default;
         virtual ~Component() = default;
         // Virtual Functions
-        virtual void Awake();
-        virtual void Start();
-        virtual void Update();
-        virtual void LateUpdate();
+        virtual void Awake() {};
+        virtual void Start() {};
+        virtual void Update() {};
+        virtual void LateUpdate() {};
         // Functions
         bool IsEnabled();
         void SetEnabled(bool value);
