@@ -1,10 +1,6 @@
 ## TODO:
-> Object Components; 
-
-> Level loader; 
-
-> Texture Component; 
-
-> Render Function now accounting possible texture components; 
-
-> Physics component; 
+> Object Components <br />
+> Level loader <br />
+> Texture Component <br />
+> Render Function now accounting possible texture components <br />
+> Physics component <br />
