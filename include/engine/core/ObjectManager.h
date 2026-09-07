@@ -12,6 +12,8 @@ class  ObjectManager {
 
             objects.push_back(std::move(obj));
 
+            reference->Start();
+
             return reference;
         };
         void UpdateAll(float dt) {

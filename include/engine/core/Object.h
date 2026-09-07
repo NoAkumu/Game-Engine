@@ -16,6 +16,7 @@ class Object {
         Vector2 AnchorPoint;
         Vector2 Size;
         sf::Color Color = sf::Color::Black;
+        virtual void Start(float dt);
         virtual void Update(float dt) = 0;
         virtual void Render(sf::RenderWindow& window);
 };
