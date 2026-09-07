@@ -5,6 +5,7 @@
 #include <vector>
 #include <memory>
 
+/*Object Class*/
 class Object {
     private:
         sf::RectangleShape shape;
