@@ -4,7 +4,7 @@
 //Player plr = gameObjects.create<Player>(Vector2(0,0), Vector2(50,50));
 Button& butt = gameObjects.create<Button>(Vector2(60,60), Vector2(50,50), Vector2(0.5,0.5),1.1);
 
-void Start() {
+void Awake() {
     butt.SetFunction([]() {
         std::cout << " Button print" << std::endl;
     });
@@ -18,7 +18,6 @@ void RenderStep(sf::RenderWindow& _window) {
 
 void Update(float dt) {
     gameObjects.UpdateAll(dt);
-    
 }
 
 void LateUpdate() {
@@ -36,7 +35,7 @@ int main() {
 
     sf::Clock clock;
 
-    Start();
+    Awake();
 
     while (window.isOpen())
     {
