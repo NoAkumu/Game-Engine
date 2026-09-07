@@ -1,7 +1,7 @@
 #pragma once
 
+#include "engine/math/Vector2.h"
+
 namespace Math {
-    bool IsBetween(float x, float min, float max) {
-        return x > min && x < max;
-    };
+    bool IsBetween(float x, float min, float max);
 };
