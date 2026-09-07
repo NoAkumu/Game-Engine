@@ -16,8 +16,8 @@ void RenderStep(sf::RenderWindow& _window) {
     gameObjects.RenderAll(_window);
 }
 
-void Update(float dt) {
-    gameObjects.UpdateAll(dt);
+void Update() {
+    gameObjects.UpdateAll(Time::deltaTime);
 }
 
 void LateUpdate() {
@@ -41,7 +41,7 @@ int main() {
     {
         // Clock to count DeltaTime
         sf::Time deltaTimer = clock.restart();
-        float deltaTime = deltaTimer.asMilliseconds();
+        Time::deltaTime = deltaTimer.asMilliseconds()/1000;
 
         while (const std::optional event = window.pollEvent())
         {
@@ -54,7 +54,7 @@ int main() {
         // Update Steps
         RenderStep(window);
 
-        Update(deltaTime/1000);
+        Update();
         
         LateUpdate();
         
