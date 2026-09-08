@@ -1,21 +1,25 @@
 #include "engine/core/Object.h"
+#include "engine/core/Utils.h"
 
 void Object::Awake(){
-    for(auto& comp : Object::components) {
+    Print("This is a test");
+    Warn("This is a test!");
+    Error("This is a test!");
+    for(auto& comp : this->components) {
         comp->Awake();
     }
 }
 void Object::Start(){
-    for(auto& comp : Object::components) {
+    for(auto& comp : this->components) {
         comp->Start();
     }
 }
 void Object::Update(float dt) {
-    for(auto& comp : Object::components) {
+    for(auto& comp : this->components) {
         comp->Update();
     }
     // Physics stuff goes here i guess
-    for(auto& comp : Object::components) {
+    for(auto& comp : this->components) {
         comp->LateUpdate();
     }
 }
