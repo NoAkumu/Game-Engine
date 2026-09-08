@@ -2,9 +2,6 @@
 #include "engine/core/Utils.h"
 
 void Object::Awake(){
-    Print("This is a test");
-    Warn("This is a test!");
-    Error("This is a test!");
     for(auto& comp : this->components) {
         comp->Awake();
     }
