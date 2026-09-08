@@ -16,6 +16,11 @@ class  ObjectManager {
 
             return reference;
         };
+        void AwakeAll(float dt) {
+            for(auto& obj : objects) {
+                obj->Awake();
+            }
+        };
         void UpdateAll(float dt) {
             for(auto& obj : objects) {
                 obj->Update(dt);

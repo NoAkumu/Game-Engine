@@ -2,5 +2,5 @@
 
 namespace Time
 {
-    float deltaTime = 0;
+    inline float deltaTime = 0;
 }
