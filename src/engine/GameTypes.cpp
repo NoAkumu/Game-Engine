@@ -3,6 +3,9 @@
 #include "engine/input/Input.h"
 #include "engine/math/Math.h"
 
+/* Moving these to a component */
+
+/*
 // Player Object
 void Player::Update(float dt) {
     Player::Position += MainInput.InputDirection * 100 * dt;
@@ -33,5 +36,5 @@ void Button::Update(float dt) {
             Button::Size = Button::OriginalSize;
         }
     }
-    
 }
+*/

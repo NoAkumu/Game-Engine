@@ -16,7 +16,7 @@ class  ObjectManager {
 
             return reference;
         };
-        void AwakeAll(float dt) {
+        void AwakeAll() {
             for(auto& obj : objects) {
                 obj->Awake();
             }

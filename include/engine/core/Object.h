@@ -6,8 +6,8 @@
 #include <memory>
 
 /*Object Class*/
-class Object {
-    private:
+class Object {    
+    protected:
         sf::RectangleShape shape;
         std::vector<std::unique_ptr<Component>> components;
     public:
@@ -20,8 +20,8 @@ class Object {
         Vector2 AnchorPoint;
         Vector2 Size;
         sf::Color Color = sf::Color::Black;
-        virtual void Awake() {};
-        virtual void Start() {};
-        virtual void Update(float dt) = 0;
+        virtual void Awake();
+        virtual void Start();
+        virtual void Update(float dt);
         virtual void Render(sf::RenderWindow& window);
 };

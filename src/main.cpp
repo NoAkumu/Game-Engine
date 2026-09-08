@@ -5,16 +5,19 @@
 Button& butt = gameObjects.create<Button>(Vector2(60,60), Vector2(50,50), Vector2(0.5,0.5),1.1);
 
 void Awake() {
-
+    // Calls Awake() in all objects
+    gameObjects.AwakeAll();
 }
 
 void RenderStep(sf::RenderWindow& _window) {
     // Update Input Detection
     MainInput.Update(_window);
+    // Rendering all objects
     gameObjects.RenderAll(_window);
 }
 
 void Update() {
+    // Calls Update() in all objects
     gameObjects.UpdateAll(Time::deltaTime);
 }
 
