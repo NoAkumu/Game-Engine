@@ -6,3 +6,9 @@ bool Component::IsEnabled() {
 void Component::SetEnabled(bool value) {
     Component::enabled = value;
 }
+
+// Sprite
+
+void Sprite::Awake() {
+    //Sprite::owner
+}

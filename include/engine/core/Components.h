@@ -10,8 +10,9 @@ class Component
         Object* owner = nullptr;
         bool enabled = true;
     public:
-        // Declarations
+        // Declaration
         explicit Component() = default;
+        // Destructor
         virtual ~Component() = default;
         // Virtual Functions
         virtual void Awake() = 0;
@@ -22,17 +23,26 @@ class Component
         bool IsEnabled();
         void SetEnabled(bool value);
 };
+// Sprite Component Class
+class Sprite : public Component
+{
+    public:
+        Sprite() : Component() {};
+        ~Sprite();
+        virtual void Awake();
+        virtual void Start() {};
+        virtual void Update() {};
+        virtual void LateUpdate() {};
+};
 
 // ScriptBehavior Component Class
 class ScriptBehavior : public Component
 {
-private:
-    
-public:
-    ScriptBehavior() : Component() {};
-    ~ScriptBehavior();
-    virtual void Awake() {};
-    virtual void Start() {};
-    virtual void Update() {};
-    virtual void LateUpdate() {};
+    public:
+        ScriptBehavior() : Component() {};
+        ~ScriptBehavior();
+        virtual void Awake() {};
+        virtual void Start() {};
+        virtual void Update() {};
+        virtual void LateUpdate() {};
 };
