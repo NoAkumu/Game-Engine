@@ -7,13 +7,13 @@ class Object;
 class Component
 {
     protected:
-        Object* owner = nullptr;
         bool enabled = true;
+        Object* owner = nullptr;
     public:
         // Declaration
-        explicit Component() = default;
+        Component(Object* owner) : owner(owner) {};
         // Destructor
-        virtual ~Component() = default;
+        ~Component() = default;
         // Virtual Functions
         virtual void Awake() = 0;
         virtual void Start() = 0;
@@ -27,8 +27,8 @@ class Component
 class Sprite : public Component
 {
     public:
-        Sprite() : Component() {};
-        ~Sprite();
+        Sprite(Object* owner) : Component(owner) {};
+        ~Sprite() = default;
         virtual void Awake();
         virtual void Start() {};
         virtual void Update() {};
@@ -39,9 +39,9 @@ class Sprite : public Component
 class ScriptBehavior : public Component
 {
     public:
-        ScriptBehavior() : Component() {};
-        ~ScriptBehavior();
-        virtual void Awake() {};
+        ScriptBehavior(Object* owner) : Component(owner) {};
+        ~ScriptBehavior() = default;
+        virtual void Awake();
         virtual void Start() {};
         virtual void Update() {};
         virtual void LateUpdate() {};

@@ -1,4 +1,5 @@
 #include "engine/core/Components.h"
+#include "engine/core/Utils.h"
 
 bool Component::IsEnabled() {
     return Component::enabled;
@@ -10,5 +11,5 @@ void Component::SetEnabled(bool value) {
 // Sprite
 
 void Sprite::Awake() {
-    //Sprite::owner
+    Print(Sprite::owner);
 }

@@ -4,6 +4,7 @@
 #include "engine/core/Components.h"
 #include <vector>
 #include <memory>
+#include <utility>
 
 /*Object Class*/
 class Object {    
@@ -29,4 +30,17 @@ class Object {
         virtual void Update(float dt);
         virtual void Render(sf::RenderWindow& window);
         // Component-related functions
+        template <typename T, typename... Args>T& AddComponent(Args&&... args) {
+            //assert(std::is_base_of_v(Component, T), "Must be derived from component");
+
+            auto obj = std::make_unique<T>(std::forward<Args>(args)...);
+
+            T& reference = *obj;
+
+            components.push_back(std::move(obj));
+
+            reference.Start();
+
+            return reference;
+        };
 };

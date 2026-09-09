@@ -2,6 +2,8 @@
 #include "engine/core/Utils.h"
 
 void Object::Awake(){
+    Print(this);
+    this->AddComponent<Sprite>(this);
     for(auto& comp : this->components) {
         comp->Awake();
     }
