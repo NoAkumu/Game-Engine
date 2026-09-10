@@ -1,5 +1,6 @@
 #pragma once
 
+#include "engine/core/Window.h"
 #include "engine/core/ObjectManager.h"
 #include "engine/core/Components.h"
 #include "engine/core/Object.h"
