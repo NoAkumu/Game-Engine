@@ -9,3 +9,5 @@ struct Configs
 
 bool Save(Configs c);
 Configs Load();
+
+inline Configs Config;
