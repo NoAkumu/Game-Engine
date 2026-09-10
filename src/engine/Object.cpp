@@ -2,8 +2,6 @@
 #include "engine/core/Utils.h"
 
 void Object::Awake(){
-    Print(this);
-    this->AddComponent<Sprite>(this);
     for(auto& comp : this->components) {
         comp->Awake();
     }
@@ -22,9 +20,10 @@ void Object::Update(float dt) {
         comp->LateUpdate();
     }
 }
-void Object::Render(sf::RenderWindow& window) {
+
+void Object::Render() {
     sf::RectangleShape shap(Object::Size);
     shap.setFillColor(Object::Color);
     shap.setPosition(Object::Position - (Object::Size * AnchorPoint));
-    window.draw(shap);
+    Main_Window.draw(shap);
 }

@@ -11,9 +11,9 @@ void Awake() {
 
 void RenderStep(sf::RenderWindow& _window) {
     // Update Input Detection
-    MainInput.Update(_window);
+    MainInput.Update();
     // Rendering all objects
-    gameObjects.RenderAll(_window);
+    gameObjects.RenderAll();
 }
 
 void Update() {
@@ -26,46 +26,46 @@ void LateUpdate() {
 }
 
 int main() {
-    Configs _Config = Load();
+    Config = Load();
 
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
 
-    sf::RenderWindow window(sf::VideoMode({_Config.WIDTH,_Config.HEIGHT}), "SFML", sf::Style::Close | sf::Style::Titlebar);
-    window.setPosition(sf::Vector2i((desktop.size.x/2)-(_Config.WIDTH/2),(desktop.size.y/2)-(_Config.HEIGHT/2)));
-    window.setFramerateLimit(165);
+    Main_Window = sf::RenderWindow(sf::VideoMode({Config.WIDTH,Config.HEIGHT}), "SFML", sf::Style::Close | sf::Style::Titlebar);
+    Main_Window.setPosition(sf::Vector2i((desktop.size.x/2)-(Config.WIDTH/2),(desktop.size.y/2)-(Config.HEIGHT/2)));
+    Main_Window.setFramerateLimit(165);
 
     sf::Clock clock;
 
     Awake(); // This shoulkd be run after object loading
 
-    while (window.isOpen())
+    while (Main_Window.isOpen())
     {
         // Clock to count DeltaTime
         sf::Time deltaTimer = clock.restart();
         Time::deltaTime = deltaTimer.asMilliseconds()/1000;
 
-        while (const std::optional event = window.pollEvent())
+        while (const std::optional event = Main_Window.pollEvent())
         {
             if(event->is<sf::Event::Closed>())
-                window.close();
+                Main_Window.close();
         }
         // Clear Window for Next Rendering
-        window.clear(sf::Color::White);
+        Main_Window.clear(sf::Color::White);
 
         // Update Steps
-        RenderStep(window);
+        RenderStep(Main_Window);
 
         Update();
         
         LateUpdate();
         
         // Display whats been rendered 
-        window.display();
+        Main_Window.display();
     }
 
-    bool saved = Save(_Config);
+    bool saved = Save(Config);
     if (saved) {
-        std::cout << "Saved Config Sucessfully!" << std::endl;
+        Print("Saved Config Sucessfully!");
     }
 }
 

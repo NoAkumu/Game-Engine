@@ -6,7 +6,7 @@ class Input {
     public:
         Vector2 InputDirection;
         Vector2 MousePosition = Vector2(0,0);
-        void Update(sf::WindowBase& relative);
+        void Update();
         Input() : InputDirection(Vector2(0,0)) {};
 };
 

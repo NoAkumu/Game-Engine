@@ -26,9 +26,9 @@ class  ObjectManager {
                 obj->Update(dt);
             }
         };
-        void RenderAll(sf::RenderWindow& window) {
+        void RenderAll() {
             for(auto& obj : objects) {
-                obj->Render(window);
+                obj->Render();
             }
         };
     private:

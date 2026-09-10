@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "engine/math/Vector2.h"
-#include "engine/core/Components.h"
+#include "engine/core/Window.h"
 #include <vector>
 #include <memory>
 #include <utility>
@@ -28,11 +28,9 @@ class Object {
         virtual void Awake();
         virtual void Start();
         virtual void Update(float dt);
-        virtual void Render(sf::RenderWindow& window);
+        virtual void Render();
         // Component-related functions
         template <typename T, typename... Args>T& AddComponent(Args&&... args) {
-            //assert(std::is_base_of_v(Component, T), "Must be derived from component");
-
             auto obj = std::make_unique<T>(std::forward<Args>(args)...);
 
             T& reference = *obj;
@@ -43,4 +41,25 @@ class Object {
 
             return reference;
         };
+};
+
+// Base Components Class (You shouldn't be using this)
+class Component
+{
+    protected:
+        bool enabled = true;
+        Object* owner;
+    public:
+        // Declaration
+        Component(Object* owner) : owner(owner) {};
+        // Destructor
+        ~Component() = default;
+        // Virtual Functions
+        virtual void Awake() = 0;
+        virtual void Start() = 0;
+        virtual void Update() = 0;
+        virtual void LateUpdate() = 0;
+        // Functions
+        bool IsEnabled();
+        void SetEnabled(bool value);
 };

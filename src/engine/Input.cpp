@@ -1,8 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include "engine/input/Input.h"
 #include "engine/math/Math.h"
+#include "engine/core/Window.h"
 
-void Input::Update(sf::WindowBase& relative) {
+void Input::Update() {
     Vector2 InputDir(0,0);
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
@@ -14,6 +15,6 @@ void Input::Update(sf::WindowBase& relative) {
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
         InputDir.y += 1;
     Input::InputDirection = (InputDir.length() > 0 ? InputDir.normalized() : InputDir);
-    sf::Vector2i mousePos = sf::Mouse::getPosition(relative);
+    sf::Vector2i mousePos = sf::Mouse::getPosition(Main_Window);
     Input::MousePosition = Vector2(mousePos);
 };  
