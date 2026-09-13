@@ -1,5 +1,6 @@
 #include "engine/core/Object.h"
 #include "engine/core/Utils.h"
+#include "engine/core/ComponentParts.h"
 
 void Object::Awake(){
     for(auto& comp : this->components) {
@@ -22,8 +23,15 @@ void Object::Update(float dt) {
 }
 
 void Object::Render() {
-    sf::RectangleShape shap(Object::Size);
-    shap.setFillColor(Object::Color);
-    shap.setPosition(Object::Position - (Object::Size * AnchorPoint));
-    Main_Window.draw(shap);
+    for (auto& comp : this->components)
+    {
+        if (auto* rend = dynamic_cast<Renderable*>(comp.get()))
+        {
+            rend->Render();
+        }
+        
+    }
+    
+    // This is going to be on the renderable components
+
 }

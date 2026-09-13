@@ -2,4 +2,4 @@
 
 #include <SFML/Graphics.hpp>
 
-inline sf::RenderWindow& Main_Window;
+inline sf::RenderWindow Main_Window;

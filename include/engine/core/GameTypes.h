@@ -9,7 +9,7 @@ class Player : public Object {
 };
 
 class Button : public Object {
-    private:
+    protected:
         Vector2 OriginalSize;
         bool pressed = false;
         std::function<void()> clickFunction;

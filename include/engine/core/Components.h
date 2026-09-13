@@ -1,13 +1,15 @@
 #pragma once
 #include "engine/core/Object.h"
+#include "engine/core/ComponentParts.h"
 
 // Sprite Component Class
-class Sprite : public Component
+class Sprite : public Component, public Renderable
 {
     public:
-        Sprite(Object* owner) : Component(owner) {};
+        Sprite() = default ;
         ~Sprite() = default;
-        virtual void Awake();
+        void Render() override;
+        virtual void Awake() {};
         virtual void Start() {};
         virtual void Update() {};
         virtual void LateUpdate() {};
@@ -17,7 +19,7 @@ class Sprite : public Component
 class ScriptBehavior : public Component
 {
     public:
-        ScriptBehavior(Object* owner) : Component(owner) {};
+        ScriptBehavior() = default;
         ~ScriptBehavior() = default;
         virtual void Awake();
         virtual void Start() {};
