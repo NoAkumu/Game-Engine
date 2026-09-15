@@ -10,20 +10,23 @@ void Awake() {
     gameObjects.AwakeAll();
 }
 
+void FixedUpdate() {
+
+}
+
 void RenderStep(sf::RenderWindow& _window) {
-    // Update Input Detection
-    MainInput.Update();
+
     // Rendering all objects
     gameObjects.RenderAll();
 }
 
 void Update() {
     // Calls Update() in all objects
-    gameObjects.UpdateAll(Time::deltaTime);
+    gameObjects.UpdateAll();
 }
 
 void LateUpdate() {
-
+    
 }
 
 int main() {
@@ -36,14 +39,17 @@ int main() {
     Main_Window.setFramerateLimit(165);
 
     sf::Clock clock;
+    clock.start();
+    sf::Clock dtclock;
 
     Awake(); // This shoulkd be run after object loading
 
     while (Main_Window.isOpen())
     {
         // Clock to count DeltaTime
-        sf::Time deltaTimer = clock.restart();
+        sf::Time deltaTimer = dtclock.restart();
         Time::deltaTime = deltaTimer.asMilliseconds()/1000;
+        Time::time = clock.getElapsedTime().asMilliseconds()/1000;
 
         while (const std::optional event = Main_Window.pollEvent())
         {
@@ -52,6 +58,12 @@ int main() {
         }
         // Clear Window for Next Rendering
         Main_Window.clear(sf::Color::White);
+
+        // Update Input Detection
+        MainInput.Update();
+
+        // Physics Update
+        FixedUpdate();
 
         // Update Steps
         RenderStep(Main_Window);

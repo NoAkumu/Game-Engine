@@ -20,6 +20,7 @@ class Sprite : public Component, public Renderable
         void Render() override;
         virtual void Awake() {};
         virtual void Start() {};
+        virtual void FixedUpdate() {};
         virtual void Update() {};
         virtual void LateUpdate() {};
 };
@@ -31,6 +32,7 @@ class Physics : public Component
         ~Physics() = default;
         virtual void Awake() {};
         virtual void Start() {};
+        virtual void FixedUpdate() {};
         virtual void Update() {};
         virtual void LateUpdate() {};
 };
@@ -43,6 +45,7 @@ class ScriptBehavior : public Component
         ~ScriptBehavior() = default;
         virtual void Awake();
         virtual void Start() {};
+        virtual void FixedUpdate() {};
         virtual void Update() {};
         virtual void LateUpdate() {};
 };

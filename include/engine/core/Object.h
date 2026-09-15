@@ -27,6 +27,7 @@ class Component
         // Virtual Functions
         virtual void Awake() = 0;
         virtual void Start() = 0;
+        virtual void FixedUpdate() = 0;
         virtual void Update() = 0;
         virtual void LateUpdate() = 0;
         // Functions
@@ -60,7 +61,9 @@ class Object {
         // Functions
         virtual void Awake();
         virtual void Start();
-        virtual void Update(float dt);
+        virtual void FixedUpdate();
+        virtual void Update();
+        virtual void LateUpdate();
         virtual void Render();
         // Component-related functions
         template <typename T, typename... Args>T& AddComponent(Args&&... args) {

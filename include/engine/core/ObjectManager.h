@@ -21,9 +21,14 @@ class  ObjectManager {
                 obj->Awake();
             }
         };
-        void UpdateAll(float dt) {
+        void FixedUpdateAll() {
             for(auto& obj : objects) {
-                obj->Update(dt);
+                obj->FixedUpdate();
+            }
+        };
+        void UpdateAll() {
+            for(auto& obj : objects) {
+                obj->Update();
             }
         };
         void RenderAll() {

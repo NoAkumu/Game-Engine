@@ -12,11 +12,20 @@ void Object::Start(){
         comp->Start();
     }
 }
-void Object::Update(float dt) {
+void Object::FixedUpdate() {
+    // Physics stuff goes here i guess
+    for(auto& comp : this->components) {
+        comp->FixedUpdate();
+    }
+}
+
+void Object::Update() {
     for(auto& comp : this->components) {
         comp->Update();
     }
-    // Physics stuff goes here i guess
+}
+
+void Object::LateUpdate() {
     for(auto& comp : this->components) {
         comp->LateUpdate();
     }
