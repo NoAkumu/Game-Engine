@@ -1,5 +1,6 @@
 #include "engine/core/Settings.h"
 #include <iostream>
+#include <string>
 #include "tinyxml2.h"
 
 std::string AssetPath = "Assets";
@@ -8,7 +9,7 @@ float fixedDt = 1 / 60;
 
 using namespace tinyxml2;
 
-int GetIntXML(XMLElement* from, char* key) {
+int GetIntXML(XMLElement* from, const char* key) {
     int _value;
     XMLElement* element = from->FirstChildElement(key);
     if (element)
@@ -17,7 +18,7 @@ int GetIntXML(XMLElement* from, char* key) {
     }
     return _value;
 }
-int GetBoolXML(XMLElement* from, char* key) {
+int GetBoolXML(XMLElement* from, const char* key) {
     bool _value;
     XMLElement* element = from->FirstChildElement(key);
     if (element && element->GetText()) {
