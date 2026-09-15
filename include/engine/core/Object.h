@@ -66,7 +66,8 @@ class Object {
         virtual void LateUpdate();
         virtual void Render();
         // Component-related functions
-        template <typename T, typename... Args>T& AddComponent(Args&&... args) {
+        template <typename T, typename... Args>
+        T& AddComponent(Args&&... args) {
             auto obj = std::make_unique<T>(std::forward<Args>(args)...);
 
             T& reference = *obj;
@@ -79,4 +80,14 @@ class Object {
 
             return reference;
         };
+        template <typename T>
+        T* GetComponent() {
+            for(auto& comp : components) {
+                if (const T* result = dynamic_cast<T*>(comp.get()))
+                {
+                    return result;
+                }
+                
+            }
+        }
 };
