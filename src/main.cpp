@@ -11,11 +11,10 @@ void Awake() {
 }
 
 void FixedUpdate() {
-
+    gameObjects.FixedUpdateAll();
 }
 
 void RenderStep(sf::RenderWindow& _window) {
-
     // Rendering all objects
     gameObjects.RenderAll();
 }
@@ -26,7 +25,7 @@ void Update() {
 }
 
 void LateUpdate() {
-    
+    gameObjects.LateUpdateAll();
 }
 
 int main() {

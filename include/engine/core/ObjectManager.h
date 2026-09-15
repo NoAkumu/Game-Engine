@@ -31,6 +31,11 @@ class  ObjectManager {
                 obj->Update();
             }
         };
+        void LateUpdateAll() {
+            for(auto& obj : objects) {
+                obj->LateUpdate();
+            }
+        };
         void RenderAll() {
             for(auto& obj : objects) {
                 obj->Render();
