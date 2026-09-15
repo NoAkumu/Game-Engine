@@ -25,12 +25,13 @@ class Physics : public Component
     protected:
         Vector2 velocity;
         Vector2 acceleration;
-        float gravity = 9.81f;
+        float gravity = 981.1f;
     public:
         bool EnableGravity = true;
         Physics() = default ;
         ~Physics() = default;
         virtual void FixedUpdate();
+        void AddForce();
 };
 
 // ScriptBehavior Component Class
