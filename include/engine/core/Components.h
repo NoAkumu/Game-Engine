@@ -18,23 +18,19 @@ class Sprite : public Component, public Renderable
         Sprite(string texturePath) : texturePath(texturePath), texture(LoadTexture(texturePath)), sprite(texture) {};
         ~Sprite() = default;
         void Render() override;
-        virtual void Awake() {};
-        virtual void Start() {};
-        virtual void FixedUpdate() {};
-        virtual void Update() {};
-        virtual void LateUpdate() {};
 };
 
 class Physics : public Component
 {
+    protected:
+        Vector2 velocity;
+        Vector2 acceleration;
+        float gravity = 9.81f;
     public:
+        bool EnableGravity = true;
         Physics() = default ;
         ~Physics() = default;
-        virtual void Awake() {};
-        virtual void Start() {};
-        virtual void FixedUpdate() {};
-        virtual void Update() {};
-        virtual void LateUpdate() {};
+        virtual void FixedUpdate();
 };
 
 // ScriptBehavior Component Class
@@ -43,9 +39,4 @@ class ScriptBehavior : public Component
     public:
         ScriptBehavior() = default;
         ~ScriptBehavior() = default;
-        virtual void Awake();
-        virtual void Start() {};
-        virtual void FixedUpdate() {};
-        virtual void Update() {};
-        virtual void LateUpdate() {};
 };

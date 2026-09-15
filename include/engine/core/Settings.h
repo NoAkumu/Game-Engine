@@ -11,7 +11,6 @@ struct Configs
 
 extern string AssetPath;
 extern string SpritePath;
-extern float fixedDt;
 
 bool Save(Configs c);
 Configs Load();

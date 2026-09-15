@@ -4,6 +4,7 @@
 class Vector2 {
     public:
         float x, y;
+        Vector2() : x(0), y(0) {};
         Vector2(float x, float y) : x(x), y(y) {};
         Vector2(sf::Vector2f vec) : x(vec.x), y(vec.y) {};
         Vector2(sf::Vector2i vec) : x(vec.x), y(vec.y) {};
@@ -19,7 +20,7 @@ class Vector2 {
             return sf::Vector2u({x,y});
         }
         Vector2 operator+(const Vector2 &v2) const {
-            return Vector2(x+v2.x, x+v2.y);
+            return Vector2(x+v2.x, y+v2.y);
         }
         Vector2& operator+=(const Vector2 &v2) {
             x += v2.x;
@@ -27,7 +28,7 @@ class Vector2 {
             return *this;
         }
         Vector2 operator-(const Vector2 &v2) const {
-            return Vector2(x-v2.x, x-v2.y);
+            return Vector2(x-v2.x, y-v2.y);
         }
         Vector2& operator-=(const Vector2 &v2) {
             x -= v2.x;
@@ -55,6 +56,6 @@ class Vector2 {
             return std::sqrt(std::pow(x,2)+std::pow(y,2));
         }
         Vector2 normalized() const {
-            return Vector2(x,y)/this->length();
+            return Vector2(x,y)/length();
         }
 };

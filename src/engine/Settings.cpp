@@ -5,7 +5,6 @@
 
 std::string AssetPath = "Assets";
 string SpritePath = AssetPath + "/Sprites";
-float fixedDt = 1 / 60;
 
 using namespace tinyxml2;
 

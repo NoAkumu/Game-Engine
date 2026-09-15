@@ -4,26 +4,29 @@
 //Player plr = gameObjects.create<Player>(Vector2(0,0), Vector2(50,50));
 Button& butt = gameObjects.create<Button>(Vector2(60,60), Vector2(50,50), Vector2(0.5,0.5),1.1);
 
+// Start when the game starts
 void Awake() {
     butt.AddComponent<Sprite>("/Debug.png");
+    butt.AddComponent<Physics>();
     // Calls Awake() in all objects
     gameObjects.AwakeAll();
 }
 
+// Physics Step
 void FixedUpdate() {
     gameObjects.FixedUpdateAll();
 }
-
-void RenderStep(sf::RenderWindow& _window) {
+// Render Step
+void Render(sf::RenderWindow& _window) {
     // Rendering all objects
     gameObjects.RenderAll();
 }
-
+// Update Step
 void Update() {
     // Calls Update() in all objects
     gameObjects.UpdateAll();
 }
-
+// Late Update Step
 void LateUpdate() {
     gameObjects.LateUpdateAll();
 }
@@ -33,22 +36,29 @@ int main() {
 
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
 
-    Main_Window = sf::RenderWindow(sf::VideoMode({Config.WIDTH,Config.HEIGHT}), "SFML", sf::Style::Close | sf::Style::Titlebar);
-    Main_Window.setPosition(sf::Vector2i((desktop.size.x/2)-(Config.WIDTH/2),(desktop.size.y/2)-(Config.HEIGHT/2)));
-    Main_Window.setFramerateLimit(165);
-
+    // Clocks
     sf::Clock clock;
     clock.start();
     sf::Clock dtclock;
 
-    Awake(); // This shoulkd be run after object loading
+    float accumulator = 0.0f;
+
+    // Window startup
+    Main_Window = sf::RenderWindow(sf::VideoMode({Config.WIDTH,Config.HEIGHT}), "SFML", sf::Style::Close | sf::Style::Titlebar);
+    Main_Window.setPosition(sf::Vector2i((desktop.size.x/2)-(Config.WIDTH/2),(desktop.size.y/2)-(Config.HEIGHT/2)));
+    Main_Window.setFramerateLimit(165);
+
+    // Functions
+    Awake(); // This should be run after object loading
 
     while (Main_Window.isOpen())
     {
         // Clock to count DeltaTime
         sf::Time deltaTimer = dtclock.restart();
-        Time::deltaTime = deltaTimer.asMilliseconds()/1000;
-        Time::time = clock.getElapsedTime().asMilliseconds()/1000;
+        Time::deltaTime = deltaTimer.asMilliseconds()/1000.0f;
+        Time::time = clock.getElapsedTime().asMilliseconds()/1000.0f;
+        
+        accumulator += Time::deltaTime;
 
         while (const std::optional event = Main_Window.pollEvent())
         {
@@ -58,17 +68,18 @@ int main() {
         // Clear Window for Next Rendering
         Main_Window.clear(sf::Color::White);
 
-        // Update Input Detection
+        // Input Detection Step
         MainInput.Update();
 
-        // Physics Update
-        FixedUpdate();
-
+        // Fixed Update
+        while (accumulator >= Time::fixedDt)
+        {
+            FixedUpdate();
+            accumulator -= Time::fixedDt;
+        }
         // Update Steps
-        RenderStep(Main_Window);
-
+        Render(Main_Window);
         Update();
-        
         LateUpdate();
         
         // Display whats been rendered 

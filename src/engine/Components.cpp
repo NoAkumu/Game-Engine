@@ -14,6 +14,18 @@ void Component::SetEnabled(bool value) {
 
 // Sprite
 void Sprite::Render() {
-    this->sprite.setPosition(owner->Position - (owner->Size * owner->AnchorPoint));
-    Main_Window.draw(this->sprite);
+    sprite.setPosition(owner->Position - (owner->Size * owner->AnchorPoint));
+    Main_Window.draw(sprite);
+}
+
+// Physics
+
+void Physics::FixedUpdate() {
+    Vector2 actualaccel = acceleration;
+    if (EnableGravity) {
+        actualaccel.y = gravity;
+    }
+    //Print(owner->Position.y);
+    velocity += actualaccel;
+    owner->Position += velocity;
 }
