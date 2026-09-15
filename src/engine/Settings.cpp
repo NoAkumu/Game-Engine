@@ -1,7 +1,10 @@
 #include "engine/core/Settings.h"
 #include <iostream>
-
 #include "tinyxml2.h"
+
+std::string AssetPath = "Assets";
+string SpritePath = AssetPath + "/Sprites";
+
 
 using namespace tinyxml2;
 

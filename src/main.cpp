@@ -5,6 +5,7 @@
 Button& butt = gameObjects.create<Button>(Vector2(60,60), Vector2(50,50), Vector2(0.5,0.5),1.1);
 
 void Awake() {
+    butt.AddComponent<Sprite>("/Debug.png");
     // Calls Awake() in all objects
     gameObjects.AwakeAll();
 }

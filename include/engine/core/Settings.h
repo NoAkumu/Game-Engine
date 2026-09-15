@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+using namespace std;
 
 struct Configs
 {
@@ -6,6 +8,9 @@ struct Configs
     int HEIGHT = 720;
     bool Fullscreen = false;
 };
+
+extern string AssetPath;
+extern string SpritePath;
 
 bool Save(Configs c);
 Configs Load();

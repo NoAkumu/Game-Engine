@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <SFML/Graphics.hpp>
+#include "engine/core/Settings.h"
 
 // Text styles
 #define TERMINALCOLOR_RESET                  "\033[0m"
@@ -71,3 +73,4 @@ void Warn(const Args&... args) {
     // Resets and newline
     cout << TERMINALCOLOR_RESET << endl;;
 }
+sf::Texture LoadTexture(const std::string& path);
