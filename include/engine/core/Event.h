@@ -17,6 +17,11 @@ class Event
             listeners.emplace(id, std::move(listener));
             return id;
         }
+        void Fire(Args... args) {
+            for (const auto& [id, listener] : listeners) {
+                listener(args...);
+            }
+        }
         void Unsubscribe(ConnectionId id) {
             listeners.erase(id);
         }
