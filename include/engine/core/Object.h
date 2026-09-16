@@ -83,11 +83,11 @@ class Object {
         template <typename T>
         T* GetComponent() {
             for(auto& comp : components) {
-                if (const T* result = dynamic_cast<T*>(comp.get()))
+                if (T* result = dynamic_cast<T*>(comp.get()))
                 {
                     return result;
                 }
-                
             }
-        }
+            return nullptr;
+        };
 };

@@ -39,9 +39,5 @@ void Object::Render() {
         {
             rend->Render();
         }
-        
     }
-    
-    // This is going to be on the renderable components
-
 }
