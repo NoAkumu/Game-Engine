@@ -31,16 +31,22 @@ class  ObjectManager {
             for (std::size_t i = 0; i < objects.size(); i++)
             {
                 Collision* a = objects[i].get()->GetComponent<Collision>();
-                if (!(a != nullptr && a->IsEnabled()))
+                if (!(a != nullptr && a->IsEnabled())){
                     continue;
-
-                for (std::size_t j = i + 1; j < objects.size(); j++)
+                }
+                for (std::size_t j = 0; j < objects.size(); j++)
                 {
-                    Collision* b = objects[j].get()->GetComponent<Collision>();
-                    if (!(b != nullptr && b->IsEnabled()))
+                    if (objects[i] == objects[j]) {
                         continue;
-                        
-                    Print(a->BroadCollisionCheck(*b));
+                    }
+                    Collision* b = objects[j].get()->GetComponent<Collision>();
+                    if (!(b != nullptr && b->IsEnabled())){
+                        continue;
+                    }
+                    if (a->BroadCollisionCheck(*b) && a->Overlaping(*b))
+                    {
+                        a->PullPosition(*b);
+                    }
                 }
             }
         };

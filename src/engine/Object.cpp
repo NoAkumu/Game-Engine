@@ -3,6 +3,7 @@
 #include "engine/core/ComponentParts.h"
 
 void Object::Awake(){
+    Print(this);
     for(auto& comp : components) {
         comp->Awake();
     }

@@ -17,16 +17,38 @@ void Component::SetEnabled(bool value) {
 // Sprite
 void Sprite::Render() {
     sprite.setPosition(owner->Position - (owner->Size * owner->AnchorPoint));
+    sprite.setScale({
+        owner->Size.x / static_cast<float>(texture.getSize().x),
+        owner->Size.y / static_cast<float>(texture.getSize().y)
+    });
     Main_Window.draw(sprite);
 }
 
 // Physics
 bool pressed = false;
+void Physics::Awake() {
+    collision = owner->GetComponent<Collision>();
+}
+
 void Physics::FixedUpdate() {
     Vector2 actualaccel = acceleration;
+    
     if (EnableGravity) {
-        actualaccel.y = gravity;
+        actualaccel.y += ApplyGravity();
     }
+    //Print(velocity.y);
     velocity += actualaccel * Time::fixedDt;
     owner->Position += velocity * Time::fixedDt;
+}
+float Physics::ApplyGravity() {
+    if (collision != nullptr) {
+        if (collision->IsGrounded() || collision->Anchored)
+        {
+            if (velocity.y > 0) {
+                velocity.y = 0;
+            }
+            return 0;
+        } 
+    }
+    return gravity;
 }
