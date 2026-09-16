@@ -9,7 +9,7 @@ template <typename... Args>
 class Event
 {
     public:
-        using Listener = std::function<void(Args...)>
+        using Listener = std::function<void(Args...)>;
         using ConnectionId = std::size_t;
 
         ConnectionId Subscribe(Listener listener) {
@@ -30,5 +30,5 @@ class Event
         }
     private:
         std::unordered_map<ConnectionId, Listener> listeners;
-        ConnectionId nextId = 0
+        ConnectionId nextId = 0;
 };
