@@ -31,7 +31,7 @@ class  ObjectManager {
             for (std::size_t i = 0; i < objects.size(); i++)
             {
                 Collision* a = objects[i].get()->GetComponent<Collision>();
-                if (!(a != nullptr && a->IsEnabled())){
+                if (a == nullptr || !a->IsEnabled()){
                     continue;
                 }
                 for (std::size_t j = 0; j < objects.size(); j++)
@@ -40,7 +40,7 @@ class  ObjectManager {
                         continue;
                     }
                     Collision* b = objects[j].get()->GetComponent<Collision>();
-                    if (!(b != nullptr && b->IsEnabled())){
+                    if (b == nullptr || !b->IsEnabled()){
                         continue;
                     }
                     if (a->BroadCollisionCheck(*b) && a->Overlaping(*b))
