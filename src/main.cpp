@@ -3,8 +3,7 @@
 #include "game/Game.h"
 
 Button& plr = gameObjects.create<Button>(Vector2(0,200), Vector2(1000,100),1.1);
-Button& butt = gameObjects.create<Button>(Vector2(60,60), Vector2(50,50), Vector2(0.5,0.5),1.1);
-
+Button& butt = gameObjects.create<Button>(Vector2(60,60), Vector2(50,50), Vector2(0.5,0.5),1.1); 
 
 // Start when the game starts
 void Awake() {
@@ -53,7 +52,8 @@ int main() {
     // Window startup
     Main_Window = sf::RenderWindow(sf::VideoMode({Config.WIDTH,Config.HEIGHT}), "SFML", sf::Style::Close | sf::Style::Titlebar);
     Main_Window.setPosition(sf::Vector2i((desktop.size.x/2)-(Config.WIDTH/2),(desktop.size.y/2)-(Config.HEIGHT/2)));
-    Main_Window.setFramerateLimit(165);
+    Main_Window.setFramerateLimit(Config.maxFPS);
+    Time::fixedDt = (float) 1/Config.maxFPS;
 
     // Functions
     Awake(); // This should be run after object loading

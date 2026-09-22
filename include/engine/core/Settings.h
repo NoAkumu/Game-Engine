@@ -7,6 +7,7 @@ struct Configs
     int WIDTH = 1280;
     int HEIGHT = 720;
     bool Fullscreen = false;
+    int maxFPS = 165;
 };
 
 extern string AssetPath;
