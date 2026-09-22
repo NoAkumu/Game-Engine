@@ -14,7 +14,7 @@ void Input::Update() {
         InputDir.y -= 1;
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
         InputDir.y += 1;
-    Input::InputDirection = (InputDir.length() > 0 ? InputDir.normalized() : InputDir);
+    Input::InputDirection = InputDir;
     sf::Vector2i mousePos = sf::Mouse::getPosition(Main_Window);
     Input::MousePosition = Vector2(mousePos);
 };  
