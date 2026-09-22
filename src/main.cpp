@@ -1,5 +1,6 @@
 // Engine Include
 #include "engine/Engine.h"
+#include "game/Game.h"
 
 Button& plr = gameObjects.create<Button>(Vector2(0,200), Vector2(1000,100),1.1);
 Button& butt = gameObjects.create<Button>(Vector2(60,60), Vector2(50,50), Vector2(0.5,0.5),1.1);
@@ -10,6 +11,7 @@ void Awake() {
     butt.AddComponent<Sprite>("/Debug.png");
     butt.AddComponent<Collision>();
     butt.AddComponent<Physics>();
+    butt.AddComponent<Movement>();
     plr.AddComponent<Sprite>("/Debug.png");
     Collision& a = plr.AddComponent<Collision>();
     a.Anchored = true;
