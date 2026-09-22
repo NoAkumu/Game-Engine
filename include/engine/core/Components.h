@@ -26,13 +26,16 @@ struct CollisionData
     void* objectHit;
     void* thisObject;
     Vector2 overlap;
+    Vector2 normal;
+    CollisionData(void* oH, void* tO, Vector2 o, Vector2 dir) : objectHit(oH), thisObject(tO), overlap(o), normal(dir) {}
 };
 
 class Collision : public Component
 {
     private:
-        bool grounded = false;
+        
     public:
+        bool grounded = false;
         bool Anchored = false;
         Vector2 min, max;
         Collision() = default;
@@ -87,13 +90,6 @@ class Collision : public Component
             return distanceSquared <= radiusSum*radiusSum;
         }
         void PullPosition(Collision &other) {
-            if (CalculateNormal(other).y > 0)
-            {
-                grounded = true;
-            }else
-            {
-                grounded = false;
-            }
             if (Anchored) {
                 return;
             }
@@ -108,9 +104,7 @@ class Collision : public Component
             } else { 
                 owner->Position.y += direction.y >= 0.0f ? -overlap.y : overlap.y;
             }
-        }
-        bool IsGrounded() {
-            return grounded;
+            OnCollide.Fire(CollisionData(this, &other, overlap, CalculateNormal(other)));
         }
 };
 // Physics Component Class
@@ -120,15 +114,16 @@ class Physics : public Component
         Collision* collision = nullptr;
         Vector2 velocity;
         Vector2 acceleration;
-        float gravity = 981.1f;
+        float gravity = 981.0f;
         float ApplyGravity();
+        float mass = 1.0f;
     public:
         bool EnableGravity = true;
-        Physics() = default ;
+        Physics() = default;
         virtual ~Physics() = default;
         virtual void Awake();
         virtual void FixedUpdate();
-        void AddForce();
+        void AddForce(Vector2 f);
 };
 // ScriptBehavior Component Class
 class ScriptBehavior : public Component
@@ -136,4 +131,9 @@ class ScriptBehavior : public Component
     public:
         ScriptBehavior() = default;
         ~ScriptBehavior() = default;
+        virtual void Awake() {};
+        virtual void Start() {};
+        virtual void FixedUpdate() {};
+        virtual void Update() {};
+        virtual void LateUpdate() {};
 };

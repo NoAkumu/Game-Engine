@@ -43,10 +43,15 @@ class  ObjectManager {
                     if (b == nullptr || !b->IsEnabled()){
                         continue;
                     }
-                    if (a->BroadCollisionCheck(*b) && a->Overlaping(*b))
+                    if (!a->BroadCollisionCheck(*b))
                     {
-                        a->PullPosition(*b);
+                        continue;
                     }
+                    if (!a->Overlaping(*b))
+                    {
+                        continue;
+                    }
+                    a->PullPosition(*b);
                 }
             }
         };
