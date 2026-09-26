@@ -1,4 +1,4 @@
-#include "engine/core/Utils.h"
+#include "engine/core/Utils.hpp"
 
 sf::Texture LoadTexture(const std::string& path) {
     try

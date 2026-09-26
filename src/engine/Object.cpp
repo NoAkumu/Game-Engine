@@ -1,6 +1,6 @@
-#include "engine/core/Object.h"
-#include "engine/core/Utils.h"
-#include "engine/core/ComponentParts.h"
+#include "engine/core/Object.hpp"
+#include "engine/core/Utils.hpp"
+#include "engine/core/ComponentParts.hpp"
 
 void Object::Awake(){
     Print(this);

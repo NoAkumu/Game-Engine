@@ -1,5 +1,5 @@
-#include "engine/Engine.h" 
-#include "game/movement.h"
+#include "engine/Engine.hpp" 
+#include "game/movement.hpp"
 
 Physics* phys;
 Collision* coll;

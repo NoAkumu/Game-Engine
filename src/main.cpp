@@ -1,9 +1,12 @@
 // Engine Include
-#include "engine/Engine.h"
-#include "game/Game.h"
+#include "engine/Engine.hpp"
+#include "game/Game.hpp"
+
+Object& a = gameObjects.create(Vector2(0,0), Vector2(50,50));
 
 // Start when the game starts
 void Awake() {
+    //a.AddComponent<Sprite>("/Debug.png");
     // Calls Awake() in all objects
     gameObjects.AwakeAll();
 }

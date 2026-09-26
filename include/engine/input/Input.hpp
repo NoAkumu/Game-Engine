@@ -1,5 +1,5 @@
 #pragma once
-#include "engine/math/Vector2.h"
+#include "engine/math/Vector2.hpp"
 #include "SFML/Graphics.hpp"
 
 class Input {

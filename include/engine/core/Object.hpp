@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "engine/math/Vector2.h"
-#include "engine/core/Window.h"
-#include "engine/core/Utils.h"
+#include "engine/math/Vector2.hpp"
+#include "engine/core/Window.hpp"
+#include "engine/core/Utils.hpp"
 #include <vector>
 #include <memory>
 #include <utility>

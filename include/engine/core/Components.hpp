@@ -1,9 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "engine/core/Object.h"
-#include "engine/core/ComponentParts.h"
-#include "engine/core/Utils.h"
-#include "engine/core/Event.h"
+#include "engine/core/Object.hpp"
+#include "engine/core/ComponentParts.hpp"
+#include "engine/core/Utils.hpp"
+#include "engine/core/Event.hpp"
 #include <iostream>
 #include <string>
 using namespace std;

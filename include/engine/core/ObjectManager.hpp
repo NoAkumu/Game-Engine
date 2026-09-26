@@ -1,7 +1,7 @@
 #pragma once
-#include "engine/core/Object.h"
-#include "engine/core/Utils.h"
-#include "engine/core/Components.h"
+#include "engine/core/Object.hpp"
+#include "engine/core/Utils.hpp"
+#include "engine/core/Components.hpp"
 #include <memory>
 #include <utility>
 #include <vector>

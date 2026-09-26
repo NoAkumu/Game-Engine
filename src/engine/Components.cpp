@@ -1,10 +1,10 @@
-#include "engine/core/Components.h"
-#include "engine/core/Utils.h"
-#include "engine/core/Window.h"
-#include "engine/core/ComponentParts.h"
-#include "engine/core/Settings.h"
-#include "engine/input/Input.h"
-#include "engine/core/Time.h"
+#include "engine/core/Components.hpp"
+#include "engine/core/Utils.hpp"
+#include "engine/core/Window.hpp"
+#include "engine/core/ComponentParts.hpp"
+#include "engine/core/Settings.hpp"
+#include "engine/input/Input.hpp"
+#include "engine/core/Time.hpp"
 #include <SFML/Graphics.hpp>
 
 bool Component::IsEnabled() {

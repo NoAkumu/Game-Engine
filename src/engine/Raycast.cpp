@@ -1,4 +1,4 @@
-#include "engine/physics/Raycast.h"
+#include "engine/physics/Raycast.hpp"
 
 bool CheckLineCast(Ray ray, float maxDist) {
     ray.direction = ray.direction.normalized();

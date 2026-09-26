@@ -1,4 +1,4 @@
-#include "engine/core/Settings.h"
+#include "engine/core/Settings.hpp"
 #include <iostream>
 #include <string>
 #include "tinyxml2.h"

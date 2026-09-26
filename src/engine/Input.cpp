@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
-#include "engine/input/Input.h"
-#include "engine/math/Math.h"
-#include "engine/core/Window.h"
+#include "engine/input/Input.hpp"
+#include "engine/math/Math.hpp"
+#include "engine/core/Window.hpp"
 
 void Input::Update() {
     Vector2 InputDir(0,0);

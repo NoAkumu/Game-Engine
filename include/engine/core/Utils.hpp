@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "engine/core/Settings.h"
+#include "engine/core/Settings.hpp"
 
 // Text styles
 #define TERMINALCOLOR_RESET                  "\033[0m"
