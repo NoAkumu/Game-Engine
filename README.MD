@@ -55,7 +55,7 @@ Or build it first then run
 
 ## Usage
 
-[Brief explanation of how to create a project, open the editor, create a scene, or run a game.]
+It isn't usable to create real games at the moment, it's just the base of the engine
 
 ## Roadmap
 
