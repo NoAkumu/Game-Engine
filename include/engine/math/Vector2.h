@@ -52,6 +52,9 @@ class Vector2 {
         bool operator!=(const Vector2 &v2) const {
             return x != v2.x || y != v2.y;
         }
+        float dot(const Vector2& vec) const {
+            return x * vec.x + y * vec.y;
+        }
         float length() const {
             return std::sqrt(std::pow(x,2)+std::pow(y,2));
         }
