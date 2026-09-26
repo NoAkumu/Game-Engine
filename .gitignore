@@ -3,5 +3,4 @@
 *.directory
 *.desktop
 .vscode
-game
 ./run.sh
