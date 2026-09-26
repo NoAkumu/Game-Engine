@@ -35,7 +35,6 @@ class Collision : public Component
     private:
         
     public:
-        bool grounded = false;
         bool Anchored = false;
         Vector2 min, max;
         Collision() = default;
@@ -124,6 +123,7 @@ class Physics : public Component
         virtual void Awake();
         virtual void FixedUpdate();
         void AddForce(Vector2 f);
+        Vector2 GetVelocity();
 };
 // ScriptBehavior Component Class
 class ScriptBehavior : public Component
