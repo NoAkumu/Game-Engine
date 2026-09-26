@@ -24,4 +24,4 @@ run: $(TARGET)
 	./$(TARGET)
 
 clean:
-	rm -rf $(OBJECTS) $(TARGET)
+	rm -rf $(OBJECTS)
