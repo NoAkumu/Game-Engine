@@ -1,6 +1,6 @@
 CXX := g++
 
-CXXFLAGS := -Wall -Wextra -I./include
+CXXFLAGS := -Wall -Wextra -Iinclude
 
 LDFLAGS := 
 LDLIBS := -lsfml-graphics -lsfml-window -lsfml-system -ltinyxml2
@@ -10,7 +10,7 @@ TARGET := game
 SOURCE := $(wildcard src/*.cpp src/engine/*.cpp)
 OBJECTS := $(SOURCE:.cpp=.o)
 
-.PHONY: all clean run 
+.PHONY: all clean run delete
 
 all: $(TARGET)
 
