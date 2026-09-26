@@ -23,5 +23,8 @@ src/%.o: src/%.cpp
 run: $(TARGET)
 	./$(TARGET)
 
+delete:
+	rm -rf $(OBJECTS) $(TARGET)
+
 clean:
 	rm -rf $(OBJECTS)
