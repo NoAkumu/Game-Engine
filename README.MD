@@ -37,15 +37,20 @@ APIs, systems, and internal architecture may change significantly as development
 * TinyXML2
 
 ### Build
-
-```bash
-[build command]
+If you want to only build the game without running it run:
+```shell
+make && make clean
 ```
 
 ### Run
-
-```bash
-[run command]
+To build and run the game just run the ./run.sh file by doing:
+```shell
+chmod +x ./run.sh
+./run.sh
+```
+Or build it first then run
+```shell
+./game
 ```
 
 ## Usage
