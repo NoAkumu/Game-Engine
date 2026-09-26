@@ -1,9 +1,7 @@
 #include "engine/core/Object.hpp"
-#include "engine/core/Utils.hpp"
 #include "engine/core/ComponentParts.hpp"
 
 void Object::Awake(){
-    Print(this);
     for(auto& comp : components) {
         comp->Awake();
     }
