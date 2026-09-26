@@ -41,16 +41,15 @@ APIs, systems, and internal architecture may change significantly as development
 * [TinyXML2](https://github.com/leethomason/tinyxml2)
 
 ### Build
-If you want to only build the game without running it run:
+If you want to only build the game without running it run
 ```shell
 make && make clean
 ```
 
 ### Run
-To build and run the game just run the ./run.sh file by doing:
+To build and run the game just run
 ```shell
-chmod +x ./run.sh
-./run.sh
+make && make run
 ```
 Or build it first then run
 ```shell
