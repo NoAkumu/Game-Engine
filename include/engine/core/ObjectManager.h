@@ -2,15 +2,16 @@
 #include "engine/core/Object.h"
 #include "engine/core/Utils.h"
 #include "engine/core/Components.h"
-#include <vector>
 #include <memory>
+#include <utility>
+#include <vector>
 
 class  ObjectManager {
     public:
-        template <typename T, typename... Args> T& create(Args&&... args) {
-            auto obj = std::make_unique<T>(std::forward<Args>(args)...);
+        template <typename... Args> Object& create(Args&&... args) {
+            auto obj = std::make_unique<Object>(std::forward<Args>(args)...);
             
-            T& reference = *obj;
+            Object& reference = *obj;
 
             objects.push_back(std::move(obj));
 

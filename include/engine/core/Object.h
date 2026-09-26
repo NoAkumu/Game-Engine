@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "engine/math/Vector2.h"
 #include "engine/core/Window.h"
+#include "engine/core/Utils.h"
 #include <vector>
 #include <memory>
 #include <utility>
@@ -39,13 +40,17 @@ class Component
 };
 
 /*Object Class*/
-class Object {    
+class Object {
     protected:
         sf::RectangleShape shape;
         std::vector<std::unique_ptr<Component>> components;
     public:
         // Declaration
-        Object(Vector2 position, Vector2 size, Vector2 AnchorPoint = Vector2(0,0)) : Position(position), Size(size), AnchorPoint(AnchorPoint) {
+        Object(Vector2 position, Vector2 size, Vector2 AnchorPoint) : Position(position), Size(size), AnchorPoint(AnchorPoint) {
+            shape.setPosition(position);
+            shape.setSize(size);
+        }
+        Object(Vector2 position, Vector2 size) : Position(position), Size(size), AnchorPoint(Vector2(0,0)) {
             shape.setPosition(position);
             shape.setSize(size);
         }
@@ -68,6 +73,8 @@ class Object {
         // Component-related functions
         template <typename T, typename... Args>
         T& AddComponent(Args&&... args) {
+            static_assert(std::is_base_of_v<Component, T>,"Class is not a Valid Component");
+
             auto obj = std::make_unique<T>(std::forward<Args>(args)...);
 
             T& reference = *obj;
