@@ -70,6 +70,9 @@ class  ObjectManager {
                 obj->Render();
             }
         };
+        const std::vector<std::unique_ptr<Object>>& GetObjects() {
+            return objects;
+        };
     private:
         std::vector<std::unique_ptr<Object>> objects;
 };
